@@ -13,7 +13,7 @@ RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/so
 RUN apt-get update -y
 RUN apt-get install -y google-chrome-stable
 
-RUN echo "* * * * * /bin/bash /app/run.sh >> /app/logs/main.log 2>&1" > /etc/cron.d/my_cron
+RUN echo "*/30 * * * * /bin/bash /app/run.sh >> /app/logs/main.log 2>&1" > /etc/cron.d/my_cron
 RUN chmod 755 /etc/cron.d/my_cron
 RUN crontab /etc/cron.d/my_cron
 RUN service cron start
