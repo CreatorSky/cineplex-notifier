@@ -23,6 +23,7 @@ The Cineplex Notifier application requires the following environment variables t
 - `EMAIL`: The Gmail email address to be used as the sender's email in the SMTP server.
 - `PASSWORD`: The Gmail app password to send text messages via email from your email address to your phone. [MORE INFO](https://support.google.com/accounts/answer/185833)
 - `PHONE`: The phone number(s) and provider(s) to receive the notifications. Multiple phone numbers and providers can be specified, separated by commas. For example: `PHONE#1:PROVIDER1,PHONE#2:PROVIDER2`.
+Currently supported Canadian providers: Virgin, Bell, MTS, Rogers, Telus, Fido, Freedom, Koodoo, PC, Sasktel
 
 ## Usage
 
