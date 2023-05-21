@@ -1,0 +1,11 @@
+version: '3'
+services:
+  cineplex-notifier:
+    build:
+      context: .
+    image: cineplex-notifier
+    environment:
+      - URL=https://www.cineplex.com/movie/oppenheimer
+      - EMAIL=<enter_email_here>
+      - PASSWORD=<enter_app_password_here>
+      - PHONE=<enter_phone:provider_here>
