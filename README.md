@@ -12,6 +12,7 @@ Cineplex Notifier is a Python application that allows you to receive alerts when
 
 Before running the Cineplex Notifier application, ensure that you have the following prerequisites installed:
 
+- Make
 - Docker
 
 ## Configuration
