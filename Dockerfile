@@ -3,7 +3,8 @@ FROM python:3.8-slim-buster
 RUN apt-get update && apt-get install -y \
     cron \
     wget \
-    gnupg
+    gnupg \
+    dos2unix
 
 #set up the Chrome PPA
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -27,6 +28,8 @@ RUN pip install -r requirements.txt
 
 RUN chmod 755 /app/entrypoint.sh
 RUN chmod 755 /app/run.sh
+
+RUN dos2unix /app/entrypoint.sh && dos2unix /app/run.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["cron", "-f"]
