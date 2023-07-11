@@ -3,6 +3,7 @@ import logging
 import sys
 
 from utils.selenium_utils import has_booking_started
+from utils.selenium_utils import has_new_booking_added
 from utils.email_utils import send_alert
 from providers.sms_gateways import sms_gateways
 
@@ -39,5 +40,8 @@ if __name__ == "__main__":
     if any(e.split(':')[1] not in sms_gateways for e in phone_provider_pairs):
         raise ValueError(f"Invalid provider(s){phone_provider_pairs}. Only the following providers are supported: {operators}")
 
-    if has_booking_started(url):
+    # if has_booking_started(url):
+    #     send_alert(url, email, password, phone_provider_pairs)
+
+    if has_new_booking_added(35397, 7420, "2023-07-26hbT00:00:00"):
         send_alert(url, email, password, phone_provider_pairs)

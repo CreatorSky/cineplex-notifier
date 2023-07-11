@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
 import logging
+import requests
 
 
 def has_booking_started(url: str) -> bool:
@@ -27,3 +28,20 @@ def has_booking_started(url: str) -> bool:
         return False
     finally:
         driver.close()
+
+def has_new_booking_added(film_id: int, location_id: int, target_date: str) -> bool:
+
+    headers = {'ocp-apim-subscription-key': 'dcdac5601d864addbc2675a2e96cb1f8'}
+
+    params = {
+        'filmId': f'{film_id}',
+        'locationId': f'{location_id}',
+    }
+
+    response = requests.get(
+        'https://apis.cineplex.com/prod/cpx/theatrical/api/v1/dates/bookable',
+        params=params,
+        headers=headers,
+    )
+
+    return target_date in response.json()
